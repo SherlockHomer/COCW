@@ -12,11 +12,12 @@
       const MigrationHistory = [
         {
           origin: 'https://www.okx.com',
-          targetOrigin: 'https://sherlockhomer.github.io',
+          targetOrigin: 'https://new-origin.com',
         },
       ];
       const MigrationEvent = {
         setCookie: 'setCookie',
+        ack: 'ack',
       };
       const setCookies = (name, value, days) => {
         let expires = '';
@@ -30,19 +31,25 @@
           '=' +
           (value || '') +
           expires +
-          `; path=/COCW; domain=${MigrationHistory[0].targetOrigin.split('://')[1]}; SameSite=None;Secure`;
+          `; path=/; domain=${MigrationHistory[0].targetOrigin.split('://')[1]}; SameSite=None;Secure`;
       };
 
       window.addEventListener('message', (event) => {
+        // 检查消息来源的安全性
         if (event.origin !== MigrationHistory[0].origin) {
           return;
         }
 
+        // 处理父窗口返回的数据
         if (event.data.eventName === MigrationEvent.setCookie) {
           console.log('from old site: ', event.data.value);
           Object.entries(event.data.value).forEach(([key, value]) => {
             setCookies(key, value, 365);
           });
+          event.source.postMessage({
+            eventName: MigrationEvent.ack,
+            value: true
+          })
         }
       });
     </script>
