@@ -12,7 +12,7 @@
       const MigrationHistory = [
         {
           origin: 'https://www.okx.com',
-          targetOrigin: 'https://github.com',
+          targetOrigin: 'https://sherlockhomer.github.io',
         },
       ];
       const MigrationEvent = {
@@ -30,7 +30,7 @@
           '=' +
           (value || '') +
           expires +
-          `; path=/SherlockHomer; domain=${MigrationHistory[0].targetOrigin.split('://')[1]}; SameSite=None;Secure`;
+          `; path=/COCW; domain=${MigrationHistory[0].targetOrigin.split('://')[1]}; SameSite=None;Secure`;
       };
 
       window.addEventListener('message', (event) => {
