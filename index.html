@@ -9,13 +9,13 @@
     <h2>iframe, 相当于全球通域名下的一个空页面</h2>
     <div id="data"></div>
     <script>
-      export const MigrationHistory = [
+      const MigrationHistory = [
         {
           origin: 'https://www.okx.com',
           targetOrigin: 'https://github.com',
         },
       ];
-      export const MigrationEvent = {
+      const MigrationEvent = {
         setCookie: 'setCookie',
       };
       const setCookies = (name, value, days) => {
