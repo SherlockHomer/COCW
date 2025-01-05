@@ -11,10 +11,9 @@
     <script>
       const MigrationHistory = [
         {
-          origin: 'https://www.okx.com/web3/mini-wallet',
+          origin: 'https://www.okx.com',
           originHref: 'https://www.okx.com/web3/mini-wallet',
-          targetOrigin: 'https://sherlockhomer.github.io/COCW',
-          targetHref: 'https://sherlockhomer.github.io/COCW',
+          targetOrigin: 'https://new-origin.com',
         },
       ];
       const MigrationEvent = {
@@ -40,7 +39,7 @@
 
       window.addEventListener('message', (event) => {
         // 检查消息来源的安全性
-        if (event.origin !== MigrationHistory[0].origin) {
+        if (event.origin !== MigrationHistory[0].targetOrigin) {
           return;
         }
 
