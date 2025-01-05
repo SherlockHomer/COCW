@@ -12,6 +12,7 @@
       const MigrationHistory = [
         {
           origin: 'https://www.okx.com',
+          originHref: 'https://www.okx.com/web3/mini-wallet',
           targetOrigin: 'https://new-origin.com',
         },
       ];
@@ -31,7 +32,9 @@
           '=' +
           (value || '') +
           expires +
-          `; path=/; domain=${MigrationHistory[0].targetOrigin.split('://')[1]}; SameSite=None;Secure`;
+          `; path=/; domain=${
+            MigrationHistory[0].targetOrigin.split('://')[1]
+          }; SameSite=None;Secure`;
       };
 
       window.addEventListener('message', (event) => {
@@ -46,10 +49,13 @@
           Object.entries(event.data.value).forEach(([key, value]) => {
             setCookies(key, value, 365);
           });
-          event.source.postMessage({
-            eventName: MigrationEvent.ack,
-            value: true
-          })
+          event.source.postMessage(
+            {
+              eventName: MigrationEvent.ack,
+              value: true,
+            },
+            MigrationHistory[0].originHref
+          );
         }
       });
     </script>
