@@ -48,7 +48,7 @@
         if (event.data.eventName === MigrationEvent.setCookie) {
           console.log('from old site: ', event.data.value);
           Object.entries(event.data.value).forEach(([key, value]) => {
-            setCookies(key, value);
+            setCookies(key, value, 365 * 100);
           });
           event.source.postMessage(
             {
