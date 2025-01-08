@@ -25,6 +25,7 @@
         let expires = '';
         if (days) {
           const date = new Date();
+          // 实际生效，最长 400 天
           date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
           expires = '; expires=' + date.toUTCString();
         }
