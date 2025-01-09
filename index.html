@@ -6,7 +6,6 @@
     <title>global one</title>
   </head>
   <body>
-    <h2>iframe, 相当于全球通域名下的一个空页面</h2>
     <div id="data"></div>
     <script>
       const MigrationHistory = [
@@ -60,6 +59,7 @@
             },
             MigrationHistory[0].originHref
           );
+          document.getElementById('data').innerText = document.cookie;
         }
       });
     </script>
