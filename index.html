@@ -38,7 +38,7 @@
           expires +
           `; path=/COCW; domain=${
             MigrationHistory[0].targetOrigin.split('://')[1]
-          }; SameSite=None;Secure`;
+          }; SameSite=Lax;Secure`;
       };
 
       window.addEventListener('message', (event) => {
