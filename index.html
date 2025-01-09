@@ -10,12 +10,14 @@
     <div id="data"></div>
     <script>
       const MigrationHistory = [
-        {
-          origin: 'https://www.okx.com',
-          originHref: 'https://www.okx.com/web3/mini-wallet',
-          targetOrigin: 'https://sherlockhomer.github.io',
-          targetHref: 'https://sherlockhomer.github.io/COCW',
-        },
+          {
+            // eslint-disable-next-line @ok/oklint/no-hardcode-link
+            origin: 'https://beta.okex.org',
+            // eslint-disable-next-line @ok/oklint/no-hardcode-link
+            originHref: 'https://beta.okex.org/web3/mini-wallet/beta5',
+            targetOrigin: 'https://sherlockhomer.github.io',
+            targetHref: 'https://sherlockhomer.github.io/COCW',
+          },
       ];
       const MigrationEvent = {
         setCookie: 'setCookie',
